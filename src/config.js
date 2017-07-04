@@ -1,0 +1,1 @@
+exports.WEB_ROOT = '../';

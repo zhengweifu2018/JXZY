@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>webgl panorama</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	* {padding: 0px; margin: 0px}
+	body {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+	}
+
+	#viewport-3d-g {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		left: 0px;
+		overflow: hidden;
+	}
+
+	#viewport-3d {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
+	</style>
+</head>
+<body>
+<div id="viewport-3d-g">
+	<canvas id="viewport-3d"></canvas>
+</div>
+<script type="text/javascript" src="../static/three.min.js"></script>
+<script type="text/javascript">
+(function(){
+	var url = window.location.search;
+	var _request = new Object();
+	if (url.indexOf("?") != -1) {
+		
+		var str = url.substr(1);
+		strs = str.split("&");
+		for(var i = 0; i < strs.length; i ++) {
+			_request[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+		}
+	}
+	window.Z_PROPS = _request;
+	window.Z_PROPS.canvas3d = document.getElementById('viewport-3d');
+})();
+</script>
+<!-- <script type="text/javascript" src="../dist/index.bundle.js"></script> -->
+</body>
+</html>
