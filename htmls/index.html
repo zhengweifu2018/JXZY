@@ -3,14 +3,28 @@
 <head>
 	<title>Ebay Demo</title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<style type="text/css">
-	* {padding: 0px; margin: 0px}
+	* {
+		font-family: "Microsoft YaHei", arial, Georgia, serif;
+		color: rgba(0, 0, 0, 0.8);
+		padding: 0px; 
+		margin: 0px;
+	}
 	body {
-		position: absolute;
+		/*position: absolute;
 		left: 0px;
-		top: 0px;
+		top: 0px;*/
 		width: 100%;
 		height: 100%;
+		background-color: #e4d09a; 
+	}
+	#jxzy-editor {
+		position: absolute;
+		top: 90px;
+		left: 0px;
+		right: 0px;
+		bottom: 60px;
 	}
 	iframe {
 		position: absolute;
@@ -19,9 +33,129 @@
 		width: 100%;
 		height: 100%;
 	}
+	#jxzy-product-title {
+		text-align: center;
+		font-size: 20px;
+		color: #ff9000;
+		padding: 10px 0px;
+	}
+	#jxzy-search-group {
+		text-align: center;
+	}
+	#jxzy-search-input {
+		width: 70%;
+		height: 25px;
+		border-radius: 15px;
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		font-size: 14px;
+		padding: 2px 5px;
+		outline: none;
+		box-shadow: none;
+		background-color: transparent;
+	}
+	#jxzy-footer {
+		position: absolute;
+		left: 0px;
+		bottom: 15px;
+		width: 100%;
+	}
+	.jxzy-row-parent {
+		margin: auto;
+		overflow: hidden;
+		width: 80%;
+	}
+	.jxzy-row {
+		margin-left: -10px;
+		margin-right: -10px;
+	}
+	.jxzy-row:before {
+	    content: " ";
+	    display: table;
+	}
+	.jxzy-row:after {
+	    clear: both;
+	}
+	.jxzy-left {
+		width: 33.33333%;
+		box-sizing: border-box;
+		float: left;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.jxzy-btn {
+		width: 100%;
+		padding: 5px 0px;
+		box-sizing: border-box;
+		border-radius: 8px;
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		font-size: 14px;
+		text-align: center;
+	}
+	.jxzy-btn:hover {
+		background: rgba(0, 0, 0, 0.1);
+	}
+	#jxzy-intr-parent {
+		background-color: rgba(255, 255, 255, 0.5);
+		margin: 0px 10px;
+		position: absolute;
+		left: 0px;
+		bottom: 60px;
+		padding: 5px;
+		/*overflow: auto;*/
+		max-height: 80%;
+	}
+	.jxzy-intr-space {
+		height: 5px;
+	}
+
+	#jxzy-intr {
+		max-height: 500px;
+		/*margin: 0 5px;*/
+		overflow: auto;
+	}
+	.jxzy-triangle-down {
+		position: absolute;
+		left: 50%;
+		bottom: 50px;
+		width: 0;
+	    height: 0;
+	    margin-left: -5px;
+	    border-width: 10px 10px 0px;
+	    border-style: solid;
+	    border-color: rgba(255, 255, 255, 0.7) transparent transparent;
+	}
 	</style>
 </head>
 <body>
-<iframe src="../dist/index.html?caseID=test" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" seamless></iframe>
+<div id="jxzy-product-title">3D江西中医药饮片</div>
+<div id="jxzy-search-group">
+	<input type="text" value="人参" id="jxzy-search-input">
+</div>
+<div id="jxzy-editor">
+	<!-- <iframe src="http://www.baidu.com/" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" seamless></iframe> -->
+</div>
+<div id="jxzy-footer">
+	<div class="jxzy-row-parent" style="overflow: hidden">
+		<div class="jxzy-row">
+			<div class="jxzy-left">
+				<div class="jxzy-btn">目录</div>
+			</div>
+			<div class="jxzy-left">
+				<div class="jxzy-btn">介绍</div>
+			</div>
+			<div class="jxzy-left">
+				<div class="jxzy-btn">关于</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="jxzy-intr-parent">
+<!-- <div class="jxzy-intr-space"></div> -->
+<div id="jxzy-intr">
+	服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为
+</div>
+<!-- <div class="jxzy-intr-space"></div> -->
+</div>
+<div class="jxzy-triangle-down"></div>
 </body>
 </html>
