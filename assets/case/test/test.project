@@ -2,15 +2,15 @@
     "geometries": [
         {
             "url": "./meshes/pSphereShape1.mesh",
-            "uuid": "80c143ae-1e36-3512-969f-e7695062acea"
+            "uuid": "856139cb-bbf7-35a2-918d-67fd91e1fdea"
         },
         {
             "url": "./meshes/pCubeShape1.mesh",
-            "uuid": "97100771-5963-3e82-9d4b-c2ff9982f83c"
+            "uuid": "3293a851-3c55-3a7d-94c5-9eac9f29962f"
         },
         {
             "url": "./meshes/pCylinderShape1.mesh",
-            "uuid": "d686c6e7-06d4-3f31-8a42-073f20586ef9"
+            "uuid": "f3241d69-9ce0-3f69-8e1a-3531dea21d42"
         }
     ],
     "information": {
@@ -19,9 +19,9 @@
     "materials": [
         {
             "color": [
-                1.0,
-                1.0,
-                1
+                0.0,
+                0.0,
+                0.800000011920929
             ],
             "emissive": [
                 0.0,
@@ -30,35 +30,35 @@
             ],
             "reflectivity": 0.5,
             "shininess": 20.0,
-            "specularColor": [
+            "specular": [
                 0.5,
                 0.5,
                 0.5
             ],
             "type": "MeshPhongMaterial",
-            "uuid": "eb32048b-102f-349c-8117-9e074e591af8"
+            "uuid": "7586e9b7-df3b-3f82-90e1-87ae200e2575"
         },
         {
             "color": [
-                1.0,
-                1.0,
-                1.0
+                0.800000011920929,
+                0.800000011920929,
+                0.800000011920929
             ],
             "emissive": [
                 0.0,
                 0.0,
                 0.0
             ],
-            "map": "94d4bbf4-011a-3905-88b6-35ca27d2bbe9",
+            "map": "688c224b-bf74-3501-adde-0aa4622d58b4",
             "reflectivity": 0.5,
             "shininess": 20.0,
-            "specularColor": [
+            "specular": [
                 0.5,
                 0.5,
                 0.5
             ],
             "type": "MeshPhongMaterial",
-            "uuid": "6ddeae3a-7d15-3521-bde2-a835f8a918d2"
+            "uuid": "0b272011-9b8b-3d19-8e25-d5f6cb837d2c"
         },
         {
             "color": [
@@ -73,33 +73,33 @@
             ],
             "reflectivity": 0.5,
             "shininess": 20.0,
-            "specularColor": [
+            "specular": [
                 0.5,
                 0.5,
                 0.5
             ],
             "type": "MeshPhongMaterial",
-            "uuid": "b4ca38b5-6935-3ff5-a2f3-8bfa4a40d5b4"
+            "uuid": "7fb29e17-75a4-39f9-89b5-b8bdcec20c98"
         }
     ],
     "object": {
         "children": [
             {
-                "geometry": "80c143ae-1e36-3512-969f-e7695062acea",
+                "geometry": "856139cb-bbf7-35a2-918d-67fd91e1fdea",
                 "material": [
-                    "eb32048b-102f-349c-8117-9e074e591af8",
-                    "6ddeae3a-7d15-3521-bde2-a835f8a918d2",
-                    "b4ca38b5-6935-3ff5-a2f3-8bfa4a40d5b4"
+                    "7586e9b7-df3b-3f82-90e1-87ae200e2575",
+                    "0b272011-9b8b-3d19-8e25-d5f6cb837d2c",
+                    "7fb29e17-75a4-39f9-89b5-b8bdcec20c98"
                 ],
                 "name": "pSphereShape1",
                 "type": "Mesh",
-                "uuid": "60891dcb-7ca0-3915-a5c4-f14cf5ebed89"
+                "uuid": "27c86a71-96f7-385f-911f-69094b26c157"
             },
             {
-                "geometry": "97100771-5963-3e82-9d4b-c2ff9982f83c",
+                "geometry": "3293a851-3c55-3a7d-94c5-9eac9f29962f",
                 "material": [
-                    "b4ca38b5-6935-3ff5-a2f3-8bfa4a40d5b4",
-                    "6ddeae3a-7d15-3521-bde2-a835f8a918d2"
+                    "7fb29e17-75a4-39f9-89b5-b8bdcec20c98",
+                    "0b272011-9b8b-3d19-8e25-d5f6cb837d2c"
                 ],
                 "matrix": [
                     1.0,
@@ -121,11 +121,11 @@
                 ],
                 "name": "pCubeShape1",
                 "type": "Mesh",
-                "uuid": "38d8e03b-6311-3436-9a27-0b91df1abd39"
+                "uuid": "f9ef281a-85ba-3eea-98b0-1cbf01e7ba65"
             },
             {
-                "geometry": "d686c6e7-06d4-3f31-8a42-073f20586ef9",
-                "material": "b4ca38b5-6935-3ff5-a2f3-8bfa4a40d5b4",
+                "geometry": "f3241d69-9ce0-3f69-8e1a-3531dea21d42",
+                "material": "7fb29e17-75a4-39f9-89b5-b8bdcec20c98",
                 "matrix": [
                     1.0,
                     0.0,
@@ -146,7 +146,7 @@
                 ],
                 "name": "pCylinderShape1",
                 "type": "Mesh",
-                "uuid": "c25e9590-d17d-3b79-be78-8025e62d48d1"
+                "uuid": "8aae141e-1e03-32a1-a924-efbbd1826867"
             },
             {
                 "color": [
@@ -175,7 +175,7 @@
                 ],
                 "name": "directionalLightShape1",
                 "type": "DirectionalLight",
-                "uuid": "d1ded750-9087-300d-bbc3-b752b8f683fa"
+                "uuid": "026f4eff-2d2b-3559-ac04-ec406d1119e4"
             }
         ],
         "type": "Group"
@@ -183,7 +183,7 @@
     "textures": [
         {
             "url": "./textures/gyy.jpeg",
-            "uuid": "94d4bbf4-011a-3905-88b6-35ca27d2bbe9"
+            "uuid": "688c224b-bf74-3501-adde-0aa4622d58b4"
         }
     ]
 }
