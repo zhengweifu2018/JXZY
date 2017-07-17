@@ -1,13 +1,10 @@
+import THREE from 'three';
+import Is from './ZUtils/Is'
+
 class ZViewport3D {
 	constructor(canvas, options) {
 		this.canvas = canvas;
         options = options || {};
-        options.radius = options.radius === undefined ? 3.183 : options.radius;
-        options.geometries = options.geometries === undefined ? [] : options.geometries;
-
-        this.pre_href = options.pre_href;
-
-        this.href = undefined;
 
 		this.width = this.canvas.clientWidth;
 		this.height = this.canvas.clientHeight;
@@ -18,34 +15,18 @@ class ZViewport3D {
 
 		this.scene = new THREE.Scene();
 
-        let topGroup = new THREE.Group();
-        topGroup.scale.set(200, 200, 200);
-        topGroup.rotation.y = Math.PI;
-
-		let envSphereGeometry = new THREE.SphereGeometry(options.radius, 100, 100);
-
-        this.envSphereMaterial = new THREE.MeshBasicMaterial({color: 0xffffff, side: 1, wireframe: false});
-       	let envSphereMesh = new THREE.Mesh(envSphereGeometry, this.envSphereMaterial);
-        envSphereMesh.rotation.set(0, -Math.PI / 2, 0);
-
-        // this.sectionMaterial = new THREE.MeshBasicMaterial({color: 0xffffff, side: 0, wireframe: false, transparent: true, opacity: 0.0});
-        
-        for(let geo of options.geometries) {
-            // console.log(geo);
-            let sectionMaterial = new THREE.MeshBasicMaterial({color: 0xff00fc, side: 0, wireframe: false, transparent: true, opacity: 0});
-            let sectionMesh = new THREE.Mesh(geo, sectionMaterial);
-
-            topGroup.add(sectionMesh);
-            this.objects.push(sectionMesh);
+        if(options.objects !== undefined) {
+            if(!Is(options.objects, 'Array')) {
+                options.objects = [options.objects];
+            }
+            for(let obj of options.objects) {
+                this.scene.add(obj);
+            }
         }
-
-        topGroup.add(envSphereMesh);
-
-        this.scene.add(topGroup);
 
         this.camera = new THREE.PerspectiveCamera(53, this.width / this.height, 0.1, 5000);
 
-        this.camera.position.set(0, 0, 200);
+        this.camera.position.set(0, 0, 30);
 
 
 		this.renderer = new THREE.WebGLRenderer({canvas : this.canvas, alpha: true, antialias: true});
@@ -55,7 +36,7 @@ class ZViewport3D {
 
         this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
         // console.log(this.controls);
-        this.controls.minDistance = 100;
+        this.controls.minDistance = 10;
         this.controls.maxDistance = 400;
         this.controls.zoomSpeed = 2;
         this.controls.enablePan = false;

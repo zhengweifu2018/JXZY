@@ -3,6 +3,7 @@
  */
 
 import THREE from 'three';
+import Is from './ZUtils/Is';
 
 export default class ZObjectManager {
 
@@ -13,12 +14,12 @@ export default class ZObjectManager {
 
         this.geometries = [];
 
-        this.uid2Meshes = {};
+        this.uuid2Meshes = {};
         this.project = project;
 
         this.topObject = null;
 
-        this.uid2Script = {};
+        this.uuid2Script = {};
     }
 
 
@@ -42,8 +43,15 @@ export default class ZObjectManager {
                 break;
             case 'Mesh':
                 let mat, g;
-                if(json.material !== undefined && this.materialManager.materials[json.material]) {
-                    mat = this.materialManager.materials[json.material];
+                if(json.material !== undefined) {
+                    if(Is(json.material, 'Array')) {
+                        mat = new THREE.MultiMaterial();
+                        for(let matUuid of json.material) {
+                            mat.materials.push(this.materialManager.materials[matUuid]);
+                        }
+                    } else {
+                        mat = this.materialManager.materials[json.material];
+                    }
                 } else{
                     mat = new THREE.MeshPhongMaterial({color : 0x888888});
                     this.materialManager.materials[mat.uuid] = mat;
@@ -55,7 +63,8 @@ export default class ZObjectManager {
                 if(json.geometry !== undefined && this.geometryManager.geometries[json.geometry]) {
                    g = this.geometryManager.geometries[json.geometry];
                 } else {
-                    return;
+                    console.error("Not fount " + json.geometry + " geometry.");
+                    return new THREE.Group();
                 }
 
                 object = new THREE.Mesh();
@@ -73,6 +82,9 @@ export default class ZObjectManager {
                 object.castShadow = true;
                 object.receiveShadow = true;
                 
+                break;
+            case 'DirectionalLight':
+                object = new THREE.DirectionalLight();
                 break;
             case 'CSSSpriteObject':
 
@@ -94,14 +106,14 @@ export default class ZObjectManager {
 
         // save object uuid => script source
         if(json.scripts !== undefined) {
-            this.uid2Script[object.uuid] = [];
+            this.uuid2Script[object.uuid] = [];
             for(i in json.scripts) {
                 if (this.scriptManager.scripts[json.scripts[i]]) {
-                    this.uid2Script[object.uuid].push(this.scriptManager.scripts[json.scripts[i]]);
+                    this.uuid2Script[object.uuid].push(this.scriptManager.scripts[json.scripts[i]]);
                 }
             }
         }
-        //console.log(this.uid2Script);
+        //console.log(this.uuid2Script);
         if(json.children !== undefined) {
             for(let child in json.children) {
                 object.add(this.parse(json.children[child]));
@@ -114,8 +126,8 @@ export default class ZObjectManager {
     }
 
     setCommonValues(json, object) {
-        if(json.uid !== undefined) {
-            object.uuid = json.uid;
+        if(json.uuid !== undefined) {
+            object.uuid = json.uuid;
         } else {
             THREE.Math.generateUUID();
         }
@@ -125,7 +137,11 @@ export default class ZObjectManager {
         }
 
         if(json.color !== undefined) {
-            object.color.setHex(json.color);
+            if(Is(json.color, 'Array')) {
+                object.color.fromArray(json.color);
+            } else {
+                object.color.setHex(json.color);
+            }
         }
 
         if(json.intensity !== undefined) {
@@ -173,7 +189,7 @@ export default class ZObjectManager {
 
         function _write(object) {
             let result = {};
-            result.uid = object.uuid;
+            result.uuid = object.uuid;
 
             if (object.name !== '') {
                 result.name = object.name;

@@ -266,7 +266,7 @@ export default class ZMeshLoader {
         function _write(geometry) {
             let data = {};
 
-            data.uid = geometry.uuid;
+            data.uuid = geometry.uuid;
 
             if ( geometry.name !== '' ) {
                 data.name = geometry.name;

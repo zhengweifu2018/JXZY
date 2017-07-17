@@ -1,0 +1,189 @@
+{
+    "geometries": [
+        {
+            "url": "./meshes/pSphereShape1.mesh",
+            "uuid": "80c143ae-1e36-3512-969f-e7695062acea"
+        },
+        {
+            "url": "./meshes/pCubeShape1.mesh",
+            "uuid": "97100771-5963-3e82-9d4b-c2ff9982f83c"
+        },
+        {
+            "url": "./meshes/pCylinderShape1.mesh",
+            "uuid": "d686c6e7-06d4-3f31-8a42-073f20586ef9"
+        }
+    ],
+    "information": {
+        "author": "fun.zheng"
+    },
+    "materials": [
+        {
+            "color": [
+                1.0,
+                1.0,
+                1
+            ],
+            "emissive": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "reflectivity": 0.5,
+            "shininess": 20.0,
+            "specularColor": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "type": "MeshPhongMaterial",
+            "uuid": "eb32048b-102f-349c-8117-9e074e591af8"
+        },
+        {
+            "color": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emissive": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "map": "94d4bbf4-011a-3905-88b6-35ca27d2bbe9",
+            "reflectivity": 0.5,
+            "shininess": 20.0,
+            "specularColor": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "type": "MeshPhongMaterial",
+            "uuid": "6ddeae3a-7d15-3521-bde2-a835f8a918d2"
+        },
+        {
+            "color": [
+                0.0,
+                0.800000011920929,
+                0.0
+            ],
+            "emissive": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "reflectivity": 0.5,
+            "shininess": 20.0,
+            "specularColor": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "type": "MeshPhongMaterial",
+            "uuid": "b4ca38b5-6935-3ff5-a2f3-8bfa4a40d5b4"
+        }
+    ],
+    "object": {
+        "children": [
+            {
+                "geometry": "80c143ae-1e36-3512-969f-e7695062acea",
+                "material": [
+                    "eb32048b-102f-349c-8117-9e074e591af8",
+                    "6ddeae3a-7d15-3521-bde2-a835f8a918d2",
+                    "b4ca38b5-6935-3ff5-a2f3-8bfa4a40d5b4"
+                ],
+                "name": "pSphereShape1",
+                "type": "Mesh",
+                "uuid": "60891dcb-7ca0-3915-a5c4-f14cf5ebed89"
+            },
+            {
+                "geometry": "97100771-5963-3e82-9d4b-c2ff9982f83c",
+                "material": [
+                    "b4ca38b5-6935-3ff5-a2f3-8bfa4a40d5b4",
+                    "6ddeae3a-7d15-3521-bde2-a835f8a918d2"
+                ],
+                "matrix": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0,
+                    2.612842298816661,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "name": "pCubeShape1",
+                "type": "Mesh",
+                "uuid": "38d8e03b-6311-3436-9a27-0b91df1abd39"
+            },
+            {
+                "geometry": "d686c6e7-06d4-3f31-8a42-073f20586ef9",
+                "material": "b4ca38b5-6935-3ff5-a2f3-8bfa4a40d5b4",
+                "matrix": [
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    2.2914212087657506,
+                    1.0
+                ],
+                "name": "pCylinderShape1",
+                "type": "Mesh",
+                "uuid": "c25e9590-d17d-3b79-be78-8025e62d48d1"
+            },
+            {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "intensity": 1.0,
+                "matrix": [
+                    0.7992196603033159,
+                    0.4312850133421708,
+                    -0.4186181695185912,
+                    0.0,
+                    -0.5948393201808191,
+                    0.46779728710676394,
+                    -0.6537062653381662,
+                    0.0,
+                    -0.08610527133383516,
+                    0.7714654466934963,
+                    0.630418073032913,
+                    0.0,
+                    0.0,
+                    2.194808493641178,
+                    1.336779121295479,
+                    1.0
+                ],
+                "name": "directionalLightShape1",
+                "type": "DirectionalLight",
+                "uuid": "d1ded750-9087-300d-bbc3-b752b8f683fa"
+            }
+        ],
+        "type": "Group"
+    },
+    "textures": [
+        {
+            "url": "./textures/gyy.jpeg",
+            "uuid": "94d4bbf4-011a-3905-88b6-35ca27d2bbe9"
+        }
+    ]
+}

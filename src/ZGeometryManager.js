@@ -21,7 +21,7 @@ export default class ZGeometryManager {
 		let self = this;
 		RunGenerator(function *() {
 			for(let json of jsonList) {
-				if(json.uid !== undefined && json.url !== undefined) {
+				if(json.uuid !== undefined && json.url !== undefined) {
 					let p = self.project.pathToAbs(json.url);
 					let geo = yield LoadMeshForGenerator(p);
 					if(json.smooth !== undefined) {
@@ -32,7 +32,7 @@ export default class ZGeometryManager {
 						geo.computeVertexNormals();
 					}
 
-					self.geometries[json.uid] = geo;
+					self.geometries[json.uuid] = geo;
 				}
 			}
 			if(onLoad) {
@@ -42,10 +42,10 @@ export default class ZGeometryManager {
 	}
 
     parse(json) {
-		if(json.uid !== undefined && json.url !== undefined) {
+		if(json.uuid !== undefined && json.url !== undefined) {
 			let p = this.project.pathToAbs(json.url);
 			let geo = new ZMeshLoader();
-			geo.geometry.uuid = json.uid;
+			geo.geometry.uuid = json.uuid;
 
 			let otherpara = {};
 
@@ -81,7 +81,7 @@ export default class ZGeometryManager {
                 }
 			});
 
-			this.geometries[json.uid] = geo.geometry;
+			this.geometries[json.uuid] = geo.geometry;
 
 		}
 	}

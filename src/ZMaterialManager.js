@@ -107,6 +107,7 @@ export default class ZMaterialManager {
             'envMap',
             'lightMap'
         ];
+
         for(let mapParameter of mapParameters) {
             if(material[mapParameter] === undefined) {
                 continue;
@@ -159,7 +160,7 @@ export default class ZMaterialManager {
             }
         }
 
-        this.materials[json.uid] = material;
+        this.materials[json.uuid] = material;
         this.editableMaterials.push(material);
         return  material;
     }
@@ -175,7 +176,7 @@ export default class ZMaterialManager {
 
             }
         }
-        this.materials[json.uid] = material;
+        this.materials[json.uuid] = material;
     }
 
     write() {
@@ -185,7 +186,7 @@ export default class ZMaterialManager {
         for(UID in this.materials) {
             eResult = {};
             m = this.materials[UID];
-            eResult.uid = m.uuid;
+            eResult.uuid = m.uuid;
 
             if(m instanceof THREE.MeshFaceMaterial) {
                 let fmChildren = m.materials;

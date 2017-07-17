@@ -91,7 +91,7 @@ export default class ZTextureManager {
 
         texture.needsUpdate = true;
 
-        this.textures[json.uid] = texture;
+        this.textures[json.uuid] = texture;
 
 	}
 
@@ -102,7 +102,7 @@ export default class ZTextureManager {
 			eResult = {};
 			t = this.textures[UID];
 			if(t.uuid !== undefined) {
-				eResult.uid = t.uuid;
+				eResult.uuid = t.uuid;
 			}
 			let image = t.image;
 			let imageLength = image.length;

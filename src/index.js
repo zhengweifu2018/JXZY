@@ -1,6 +1,6 @@
-import Viewport3D from './Viewport3D';
+import ZViewport3D from './ZViewport3D';
 
-import ProjectLoader from './ProjectLoader';
+import ZProjectLoader from './ZProjectLoader';
 
 import { WEB_ROOT } from './config';
 
@@ -24,7 +24,7 @@ class Overly {
 	    this.overly.style.left = '-100%';
 	    this.overly.style.width = '100%';
 	    this.overly.style.height = '100%';
-	    this.overly.style.zIndex = isLogin ? '1000' : '999';
+	    this.overly.style.zIndex = '999';
 	    this.overly.style.backgroundColor = 'rgba(255, 255, 255, 1)';
 
 	    let logoElement = new Image();
@@ -60,18 +60,16 @@ class Overly {
 	let overly = new Overly();
 	overly.setOverlyVisible(true);
 	let viewport3d;
-	const projectUrl = `${WEB_ROOT}assets/case/${window.Z_PROPS.caseID}/project.json`;
+	const projectUrl = `${WEB_ROOT}assets/case/${window.Z_PROPS.caseID}/${window.Z_PROPS.caseID}.project`;
 	const htmlUrl = window.location.origin + window.location.pathname;
-	ProjectLoader.parse(projectUrl, (data) => {
+	ZProjectLoader.parse(projectUrl, (data) => {
 		if(viewport3d === undefined) {
-			viewport3d = new Viewport3D(window.Z_PROPS.canvas3d, {
-				pre_href:  htmlUrl + '?caseID=' + window.Z_PROPS.caseID + '&sectionID=',
-				geometries: data.geometries
+			viewport3d = new ZViewport3D(window.Z_PROPS.canvas3d, {
+				objects: data.object
 			});
 		}
-		viewport3d.envSphereMaterial.map = data.texture;
-		viewport3d.envSphereMaterial.needsUpdate = true;
+		
 		overly.setOverlyVisible(false);
-		viewport3d.aniActionPlay(viewport3d.cameraMixer, viewport3d.cameraStartClip);
+		// viewport3d.aniActionPlay(viewport3d.cameraMixer, viewport3d.cameraStartClip);
 	});
 })();
