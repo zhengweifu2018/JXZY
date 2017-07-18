@@ -142,7 +142,7 @@
 				<div class="jxzy-btn">目录</div>
 			</div>
 			<div class="jxzy-left">
-				<div class="jxzy-btn">介绍</div>
+				<div class="jxzy-btn" id="jxzy-btn-intr">介绍</div>
 			</div>
 			<div class="jxzy-left">
 				<div class="jxzy-btn">关于</div>
@@ -156,7 +156,19 @@
 	服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为服务服务费威锋网服务服务服务服务费我服务服务费我服务服务费发送链接给我讲完了放假了劳务费据我了解女郎女螺纹金饭碗王府井未来房价为
 </div>
 <!-- <div class="jxzy-intr-space"></div> -->
+<!-- <div class="jxzy-triangle-down"></div> -->
 </div>
-<div class="jxzy-triangle-down"></div>
+<script>
+(function() {
+	var intrPage = document.getElementById("jxzy-intr-parent");
+	document.getElementById("jxzy-btn-intr").addEventListener('click', function(event) {
+		if(intrPage.style.display !== "none") {
+			intrPage.style.display = "none";
+		} else {
+			intrPage.style.display = "block";
+		}
+	}, false);
+})();
+</script>
 </body>
 </html>

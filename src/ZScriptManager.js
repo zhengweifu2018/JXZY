@@ -8,6 +8,7 @@ import THREE from 'three';
 // 
 import RunGenerator from './ZUtils/RunGenerator';
 import LoadForGenerator from './ZUtils/LoadForGenerator';
+import GetCurrentDataString from './ZUtils/GetCurrentDataString';
 
 export default class ZScriptManager {
 	constructor(project) {
@@ -32,7 +33,7 @@ export default class ZScriptManager {
 
 				if(json.uuid !== undefined && json.url !== undefined) {
 					let url = self.project.pathToAbs(json.url);
-					let src = yield LoadForGenerator(url);
+					let src = yield LoadForGenerator(url + '?t=' + GetCurrentDataString());
 					self.scripts[json.uuid] = src;
 				}
 			}

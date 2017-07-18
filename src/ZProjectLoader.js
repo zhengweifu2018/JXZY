@@ -18,9 +18,9 @@ ZProjectLoader.parse = (url, onLoad) => {
         	let project = new ZProject(url);
         	const projectJson = JSON.parse(response);
             let scriptManager = new ZScriptManager(project);
-            // console.log(project);
-            scriptManager.read(projectJson.scripts, () => {
 
+            scriptManager.read(projectJson.scripts, () => {
+                // console.log(scriptManager);
                 let textureManager = new ZTextureManager(project);
                 textureManager.read(projectJson.textures);
    
@@ -31,12 +31,13 @@ ZProjectLoader.parse = (url, onLoad) => {
                 geometryManager.read(projectJson.geometries, () => {
                     let objectManager = new ZObjectManager(materialManager, scriptManager, geometryManager, project);
                     objectManager.read(projectJson.object);
+                    // console.log(objectManager.uuid2Script);
                     if(onLoad) {
-                    	onLoad({object: objectManager.topObject});
+                    	onLoad({
+                            object: objectManager.topObject,
+                            uuid2Script: objectManager.uuid2Script,
+                        });
                     }
-                    // this.player = new ZViewport3D(canvas3d, objectManager.topObject, cameraMatrix);
-                    // this.player.grid.visible = false;
-                    // this.player.loadScripts(objectManager.uid2Script, this.paras.projectName);
                 });
             });   
         }

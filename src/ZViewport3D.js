@@ -1,10 +1,24 @@
 import THREE from 'three';
 import Is from './ZUtils/Is'
+import GetAbsPath from './ZUtils/GetAbsPath';
 
 class ZViewport3D {
 	constructor(canvas, options) {
 		this.canvas = canvas;
         options = options || {};
+
+        this.events = {
+            start : [],
+            update : [],
+            keydown: [],
+            keyup: [],
+            mousedown: [],
+            mouseup: [],
+            mousemove: [],
+            touchstart: [],
+            touchend: [],
+            touchmove: []
+        },
 
 		this.width = this.canvas.clientWidth;
 		this.height = this.canvas.clientHeight;
@@ -26,7 +40,7 @@ class ZViewport3D {
 
         this.camera = new THREE.PerspectiveCamera(53, this.width / this.height, 0.1, 5000);
 
-        this.camera.position.set(0, 0, 30);
+        this.camera.position.set(0, 3.2, 13);
 
 
 		this.renderer = new THREE.WebGLRenderer({canvas : this.canvas, alpha: true, antialias: true});
@@ -36,12 +50,13 @@ class ZViewport3D {
 
         this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
         // console.log(this.controls);
-        this.controls.minDistance = 10;
-        this.controls.maxDistance = 400;
+        this.controls.minDistance = 1;
+        this.controls.maxDistance = 200;
         this.controls.zoomSpeed = 2;
         this.controls.enablePan = false;
-        // this.controls.autoRotate = true;
-        // this.controls.autoRotateSpeed = 0.2;
+        this.controls.autoRotate = true;
+        this.controls.autoRotateSpeed = 0.2;
+        this.controls.maxPolarAngle = Math.PI * 80 / 180;
 
         // camera animation
         this.cameraMixer = new THREE.AnimationMixer(this.camera);
@@ -97,6 +112,68 @@ class ZViewport3D {
         this.renderLoop();
 	}
 
+    dispatch(array, event) {
+        for(let each of array) {
+            each( event );
+        }
+    }
+
+    loadScripts (uid2script, projectPath) {
+
+        let scriptWrapParams = 'THREE, UTILS, PROJECT_PATH, player, renderer, scene, camera, parameters';
+        let scriptWrapResultObj = {parameters : 'parameters'};
+        for ( let eventKey in this.events ) {
+            scriptWrapParams += ',' + eventKey;
+            scriptWrapResultObj[ eventKey ] = eventKey;
+        }
+        let scriptWrapResult = JSON.stringify( scriptWrapResultObj ).replace( /\"/g, '' );
+
+        for(let uid in uid2script) {
+            let object = this.scene.getObjectByProperty('uuid', uid);
+            let scripts = uid2script[uid];
+
+            for(let i = 0; i < scripts.length; i++) {
+                let script = scripts[i];
+                let functions = ( new Function( scriptWrapParams, script + '\nreturn ' + scriptWrapResult + ';' ).bind( object ) )(THREE, {
+                    getAbsPath: GetAbsPath
+                }, projectPath, this, this.renderer, this.scene, this.camera);
+
+                for ( let name in functions ) {
+
+                    if ( functions[ name ] === undefined ) {
+                        continue;
+                    }
+
+                    if (name === 'parameters') {
+                        object.parameters = functions[ name ];
+                        continue;
+                    }
+
+                    if ( this.events[ name ] === undefined ) {
+
+                        console.warn( 'ZViewport3D: event type not supported (', name, ')' );
+                        continue;
+
+                    }
+
+                    this.events[ name ].push( functions[ name ].bind( object ) );
+                }
+            }
+        }
+
+        // implement start scripts
+        this.dispatch( this.events.start, arguments );
+
+        document.addEventListener( 'keydown', this.onDocumentKeyDown.bind(this) );
+        document.addEventListener( 'keyup', this.onDocumentKeyUp.bind(this) );
+        document.addEventListener( 'mousedown', this.onDocumentMouseDown.bind(this) );
+        document.addEventListener( 'mouseup', this.onDocumentMouseUp.bind(this) );
+        document.addEventListener( 'mousemove', this.onDocumentMouseMove.bind(this) );
+        document.addEventListener( 'touchstart', this.onDocumentTouchStart.bind(this) );
+        document.addEventListener( 'touchend', this.onDocumentTouchEnd.bind(this) );
+        document.addEventListener( 'touchmove', this.onDocumentTouchMove.bind(this) );
+    }
+
     aniActionPlay(mixer, clip) {
         let action = mixer.clipAction(clip);
         action.setLoop(THREE.LoopOnce);
@@ -119,6 +196,7 @@ class ZViewport3D {
         this.renderer.clear();
 
         // this.controls.update();
+        this.dispatch(this.events.update);
 
         this.resizeWindow(this.canvas.parentNode.clientWidth, this.canvas.parentNode.clientHeight);
 
@@ -271,6 +349,54 @@ class ZViewport3D {
         }
 
         document.removeEventListener( 'mouseup', this.onMouseUp, false );
+
+    }
+
+    onDocumentKeyDown( event ) {
+
+        this.dispatch( this.events.keydown, event );
+
+    }
+
+    onDocumentKeyUp( event ) {
+
+        this.dispatch( this.events.keyup, event );
+
+    }
+
+    onDocumentMouseDown( event ) {
+
+        this.dispatch( this.events.mousedown, event );
+
+    }
+
+    onDocumentMouseUp( event ) {
+
+        this.dispatch( this.events.mouseup, event );
+
+    }
+
+    onDocumentMouseMove( event ) {
+
+        this.dispatch( this.events.mousemove, event );
+
+    }
+
+    onDocumentTouchStart( event ) {
+
+        this.dispatch( this.events.touchstart, event );
+
+    }
+
+    onDocumentTouchEnd( event ) {
+
+        this.dispatch( this.events.touchend, event );
+
+    }
+
+    onDocumentTouchMove( event ) {
+
+        this.dispatch( this.events.touchmove, event );
 
     }
 

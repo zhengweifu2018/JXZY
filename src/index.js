@@ -67,6 +67,7 @@ class Overly {
 			viewport3d = new ZViewport3D(window.Z_PROPS.canvas3d, {
 				objects: data.object
 			});
+			viewport3d.loadScripts(data.uuid2Script, projectUrl);
 		}
 		
 		overly.setOverlyVisible(false);

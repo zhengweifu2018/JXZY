@@ -184,9 +184,11 @@ export default class ZMeshLoader {
 
                     // face vertex uv is true
                     faceNumber = this.geometry.faces.length;
+                    // console.log(uvLayers)
                     if(uvs !== undefined) {
                         if(hasFaceVertexUv) {
                             if(uvLayers > 0) {
+                                
                                 for(let i = 0; i < uvLayers; i++) {
                                     if(this.geometry.faceVertexUvs[i] === undefined) {
                                         this.geometry.faceVertexUvs.push([]);
@@ -203,7 +205,7 @@ export default class ZMeshLoader {
                             }
                         }
                     }
-
+                    // console.log(this.geometry.faceVertexUvs)
                     // if have not uv2, copy uv1 to uv2, beacuse light map is uv2
                     if(this.geometry.faceVertexUvs.length === 1) {
                         this.geometry.faceVertexUvs.push(this.geometry.faceVertexUvs[0]);
