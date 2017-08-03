@@ -1,0 +1,29 @@
+{
+  "name": "productmanager",
+  "version": "1.0.0",
+  "description": "Product manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "product"
+  ],
+  "author": "fun-zheng",
+  "license": "ISC",
+  "dependencies": {
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "element-react": "^1.1.4",
+    "element-theme-default": "^1.4.1",
+    "html-webpack-plugin": "^2.30.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.4.1"
+  }
+}
