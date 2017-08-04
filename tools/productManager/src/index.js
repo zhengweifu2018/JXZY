@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import ProductApp from './ProductApp';
+import ProductListApp from './ProductListApp';
 
 
 ReactDOM.render(
-    <ProductApp />,
+    <ProductListApp />,
     document.getElementById('app')
 );

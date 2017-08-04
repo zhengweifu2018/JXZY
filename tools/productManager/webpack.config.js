@@ -15,6 +15,8 @@ var config = {
         filename: '[name].bundle.js'
     },
 
+    target: 'node',
+
     resolve: {
         extensions: ['.js', '.jsx', '.css', '.scss', 'jpg', 'png']
     },
