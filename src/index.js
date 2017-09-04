@@ -56,15 +56,15 @@ class Overly {
     }
 }
 
-(() => {
+export default (canvas, projectUrl) => {
 	let overly = new Overly();
 	overly.setOverlyVisible(true);
 	let viewport3d;
-	const projectUrl = `${WEB_ROOT}assets/case/${window.Z_PROPS.caseID}/${window.Z_PROPS.caseID}.project`;
+	// const projectUrl = `${WEB_ROOT}assets/case/${window.Z_PROPS.caseID}/${window.Z_PROPS.caseID}.project`;
 	const htmlUrl = window.location.origin + window.location.pathname;
 	ZProjectLoader.parse(projectUrl, (data) => {
 		if(viewport3d === undefined) {
-			viewport3d = new ZViewport3D(window.Z_PROPS.canvas3d, {
+			viewport3d = new ZViewport3D(canvas, {
 				objects: data.object
 			});
 			viewport3d.loadScripts(data.uuid2Script, projectUrl);
@@ -73,4 +73,4 @@ class Overly {
 		overly.setOverlyVisible(false);
 		// viewport3d.aniActionPlay(viewport3d.cameraMixer, viewport3d.cameraStartClip);
 	});
-})();
+};

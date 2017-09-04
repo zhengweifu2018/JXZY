@@ -12,14 +12,7 @@ import axios from 'axios';
 import GridList from 'zele-react/dist/components/Grid/GridList'; 
 import ImageItem from 'zele-react/dist/components/ImageItem'; 
 
-console.log(GridList);
-
-const ShowState = {
-	NONE: 0,
-	CATALOG: 1,
-	INTRODUCE: 2,
-	ABOUT: 3
-};
+import main3d from './index';
 
 axios.get(`${WEB_ROOT}assets/productInfo.json`).then((res) => {
 
@@ -30,24 +23,32 @@ axios.get(`${WEB_ROOT}assets/productInfo.json`).then((res) => {
 			super(props);
 
 			this.state = {
-				activeId: -1
+				activeId: props.activeId
 			}
 		}
 
 		static propTypes = {
-			products: PropTypes.array
+			products: PropTypes.array,
+			activeId: PropTypes.number,
+			onItemClick: PropTypes.func
 		};
 
 		static defaultProps = {
-			products: []
+			products: [],
+			activeId: -1
 		};
 
 		render() {
-			const { products } = this.props;
+			const { products, onItemClick } = this.props;
 
 			const itemElements = products.map((item, index) => {
 				return <div key={index} style={{marginBottom: 10}}>
-					<ImageItem img={item.image} title={item.name} defaultBorderColor='rgba(0, 0, 0, 0.1)'/>
+					<ImageItem active={index === this.state.activeId ? true : false} activeColor='#ff9000' img={item.image} title={item.name} defaultBorderColor='rgba(0, 0, 0, 0.1)' onClick={(e, title) => {
+						this.setState({activeId: index});
+						if(onItemClick) {
+							onItemClick(e, title, index);
+						}
+					}}/>
 				</div>;
 			});
 
@@ -59,24 +60,31 @@ axios.get(`${WEB_ROOT}assets/productInfo.json`).then((res) => {
 		constructor(props) {
 			super(props);
 			this.state = {
-				showState: ShowState.NONE,
-				activeButtonId: -1
+				activeButtonId: -1,
+				activePid: -1
 			};
+		}
 
-			this.caseInfo = null;
-
-			for(let each of data) {
+		componentWillMount() {
+			for(let i = 0, l = data.length; i < l; i ++ ) {
+				let each = data[i];
 				if(each.name === this.props.match.params.caseName) {
-					this.caseInfo = each;
+					this.setState({activePid: i});
 					break;
 				}
 			}
 		}
 
+		componentDidMount() {
+			this.canvas = document.getElementById('jxzy-viewport');
+			main3d(this.canvas, data[this.state.activePid].project);
+		}
+
 		render() {
+
 			let resultElement = <div>没有发现该产品</div>;
 
-			if(this.caseInfo) {
+			if(this.state.activePid !== -1) {
 
 				const buttonNames = ['目录', '介绍', '关于'];
 
@@ -95,9 +103,13 @@ axios.get(`${WEB_ROOT}assets/productInfo.json`).then((res) => {
 				let popupConentElement = '';
 
 				if(this.state.activeButtonId === 0) {
-					popupConentElement = <ProductList products={data}/>
+					popupConentElement = <ProductList onItemClick={(e, title, index) => {
+						this.setState({activePid: index, activeButtonId: -1});
+						window.location.href = '#/' + title;
+						main3d(this.canvas, data[index].project);
+					}} products={data} activeId={this.state.activePid}/>
 				} else if(this.state.activeButtonId === 1) {
-					popupConentElement = this.caseInfo.introduce;
+					popupConentElement = data[this.state.activePid].introduce;
 				} else if(this.state.activeButtonId === 2) {
 					popupConentElement = 'about';
 				}
@@ -112,7 +124,7 @@ axios.get(`${WEB_ROOT}assets/productInfo.json`).then((res) => {
 					</div>
 					<div id='jxzy-footer'>
 						<div className='jxzy-row-parent' style={{overflow: 'hidden'}}>
-							<GridList cols={3}>{buttonElements}</GridList>
+							<GridList cols={3} gutter={20}>{buttonElements}</GridList>
 						</div>
 					</div>
 					<div className='jxzy-popup-parent' style={{
