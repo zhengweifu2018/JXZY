@@ -7,8 +7,8 @@ import { Dialog, Form, Button, Input } from 'element-react';
 import 'element-theme-default';
 
 // const { dialog } = require('electron').remote;
-// const ipc = require('electron').ipcRenderer;
-const fs = require('fs');
+const ipc = require('electron').remote;
+// const fs = require('fs');
 
 const IMAGE_EXT = ['jpg', 'jpeg', 'png', 'bmp'];
 
