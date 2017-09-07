@@ -10,9 +10,12 @@ import AssignUVs from './ZUtils/AssignUVs';
 
 import ZLoader from './ZLoader';
 
+import GetCurrentDataString from './ZUtils/GetCurrentDataString';
+
 export default class ZMeshLoader {
-    constructor() {
+    constructor(isDebug = false) {
         this.geometry = new THREE.Geometry();
+        this.isDebug = isDebug;
     }
 
     parse(url, onLoad, onProgress, onError) {
@@ -22,9 +25,15 @@ export default class ZMeshLoader {
 
         let recodeProcess = 0;
 
-        loader.load(url, (response) => {
+        let mUrl = url;
+
+        if(this.isDebug) {
+            mUrl += `?${GetCurrentDataString()}`;
+        }
+
+        loader.load(mUrl, (response) => {
             if(response) {
-                this.read(response, true, url);
+                this.read(response, true, mUrl);
                 if(onLoad) {
                     onLoad(this.geometry);
                 }

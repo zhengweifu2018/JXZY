@@ -1,0 +1,100 @@
+{
+    "geometries": [
+        {
+            "url": "./meshes/ZaoXinTuChaoBaiShu_002Shape.mesh",
+            "uuid": "a28a5a53-2336-3853-a1b4-447a6ffb49f8"
+        }
+    ],
+    "information": {
+        "author": "fun.zheng"
+    },
+    "materials": [
+        {
+            "aoMapIntensity": 1.0,
+            "color": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emissive": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "lightMap": "2dd5d894-03d6-365b-854f-9ec8877e2be4",
+            "lightMapIntensity": 0.4,
+            "map": "5a6fb8bd-29d5-3dd1-b5b3-aaccb53a33fd",
+            "normalMap": "a18b8cbf-f9ff-35cf-a85f-7b25dfb68167",
+            "reflectivity": 1.0,
+            "shininess": 2.0,
+            "specular": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "type": "MeshPhongMaterial",
+            "uuid": "4acf06df-5e69-30b7-b9a3-a6f88da64428"
+        }
+    ],
+    "object": {
+        "children": [
+            {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "intensity": 0.5,
+                "matrix": [
+                    1.0,
+                    0.0,
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    0.7071067811865475,
+                    -0.7071067811865476,
+                    0.0,
+                    0.0,
+                    0.7071067811865476,
+                    0.7071067811865475,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "name": "template:directionalLightShape1",
+                "type": "DirectionalLight",
+                "uuid": "9d53fabf-698a-3dd5-926f-1129b74a0b94"
+            },
+            {
+                "geometry": "a28a5a53-2336-3853-a1b4-447a6ffb49f8",
+                "material": "4acf06df-5e69-30b7-b9a3-a6f88da64428",
+                "name": "ZaoXinTuChaoBaiShu_002Shape",
+                "type": "Mesh",
+                "uuid": "f4c906ea-3fe4-3427-a0cf-efc6d023a4ab"
+            }
+        ],
+        "type": "Group"
+    },
+    "textures": [
+        {
+            "url": "./textures/ZaoXinTuChaoBaiShu_002_d.jpg",
+            "uuid": "5a6fb8bd-29d5-3dd1-b5b3-aaccb53a33fd",
+            "wrapS": 1000,
+            "wrapT": 1000
+        },
+        {
+            "url": "./textures/ZaoXinTuChaoBaiShu_002_n.jpg",
+            "uuid": "a18b8cbf-f9ff-35cf-a85f-7b25dfb68167",
+            "wrapS": 1000,
+            "wrapT": 1000
+        },
+        {
+            "url": "./textures/ZaoXinTuChaoBaiShu_002_occ.jpg",
+            "uuid": "2dd5d894-03d6-365b-854f-9ec8877e2be4",
+            "wrapS": 1000,
+            "wrapT": 1000
+        }
+    ]
+}

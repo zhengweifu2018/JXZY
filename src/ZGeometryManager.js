@@ -9,9 +9,10 @@ import RunGenerator from './ZUtils/RunGenerator';
 import LoadMeshForGenerator from './ZUtils/LoadMeshForGenerator';
 
 export default class ZGeometryManager {
-	constructor(project) {
+	constructor(project, isDebug = false) {
 		this.geometries = {};
 		this.project = project;
+		this.isDebug = isDebug;
 	}
 
 	read(jsonList, onLoad) {
@@ -23,7 +24,7 @@ export default class ZGeometryManager {
 			for(let json of jsonList) {
 				if(json.uuid !== undefined && json.url !== undefined) {
 					let p = self.project.pathToAbs(json.url);
-					let geo = yield LoadMeshForGenerator(p);
+					let geo = yield LoadMeshForGenerator(p, self.isDebug);
 					if(json.smooth !== undefined) {
 						new THREE.SubdivisionModifier(json.smooth).modify(geo);
 					}

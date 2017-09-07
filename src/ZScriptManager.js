@@ -33,7 +33,7 @@ export default class ZScriptManager {
 
 				if(json.uuid !== undefined && json.url !== undefined) {
 					let url = self.project.pathToAbs(json.url);
-					let src = yield LoadForGenerator(url + '?t=' + GetCurrentDataString());
+					let src = yield LoadForGenerator(url + '?' + GetCurrentDataString());
 					self.scripts[json.uuid] = src;
 				}
 			}

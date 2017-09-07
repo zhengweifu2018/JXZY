@@ -56,7 +56,7 @@ class ZViewport3D {
         this.controls.enablePan = false;
         this.controls.autoRotate = true;
         this.controls.autoRotateSpeed = 0.2;
-        this.controls.maxPolarAngle = Math.PI * 80 / 180;
+        // this.controls.maxPolarAngle = Math.PI * 80 / 180;
 
         // camera animation
         this.cameraMixer = new THREE.AnimationMixer(this.camera);

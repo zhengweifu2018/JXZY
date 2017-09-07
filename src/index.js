@@ -4,9 +4,9 @@ import ZProjectLoader from './ZProjectLoader';
 
 import { WEB_ROOT } from './config';
 
-import { LoadMeshForCO } from './ZUtils/LoadMeshForGenerator';
-
 import co from 'co';
+
+import { IS_DEBUG } from './config';
 
 class Overly {
 	constructor(url) {
@@ -61,7 +61,7 @@ export default (canvas, projectUrl) => {
 	overly.setOverlyVisible(true);
 	let viewport3d;
 	// const projectUrl = `${WEB_ROOT}assets/case/${window.Z_PROPS.caseID}/${window.Z_PROPS.caseID}.project`;
-	const htmlUrl = window.location.origin + window.location.pathname;
+	// const htmlUrl = window.location.origin + window.location.pathname;
 	ZProjectLoader.parse(projectUrl, (data) => {
 		if(viewport3d === undefined) {
 			viewport3d = new ZViewport3D(canvas, {
@@ -72,5 +72,5 @@ export default (canvas, projectUrl) => {
 		
 		overly.setOverlyVisible(false);
 		// viewport3d.aniActionPlay(viewport3d.cameraMixer, viewport3d.cameraStartClip);
-	});
+	}, IS_DEBUG);
 };

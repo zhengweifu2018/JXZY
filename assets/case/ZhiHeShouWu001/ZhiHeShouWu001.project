@@ -1,0 +1,107 @@
+{
+    "geometries": [
+        {
+            "url": "./meshes/ZhiHeShouWu_001Shape.mesh",
+            "uuid": "0cf6ae81-2b51-34f8-8560-34428b05fa8c"
+        }
+    ],
+    "information": {
+        "author": "fun.zheng"
+    },
+    "materials": [
+        {
+            "aoMapIntensity": 1.0,
+            "color": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "emissive": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "lightMap": "bf06a2a1-86e7-3528-b7d4-f76e6503c310",
+            "lightMapIntensity": 0.3,
+            "map": "5933a152-3942-36e2-8019-f87b8140a18d",
+            "normalMap": "f1c91195-9b81-31be-8a55-8212cf54ccf3",
+            "reflectivity": 0.10362694412469864,
+            "shininess": 10.0,
+            "specular": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "specularMap": "f4b1aaba-f6a5-38a1-8dc7-c91dbe8657b7",
+            "type": "MeshPhongMaterial",
+            "uuid": "f0a8eab6-7fe7-39cf-a89d-1410372e52b6"
+        }
+    ],
+    "object": {
+        "children": [
+            {
+                "geometry": "0cf6ae81-2b51-34f8-8560-34428b05fa8c",
+                "material": "f0a8eab6-7fe7-39cf-a89d-1410372e52b6",
+                "name": "ZhiHeShouWu_001Shape",
+                "type": "Mesh",
+                "uuid": "fe62cad9-188c-332f-845f-3a3cc2346f45"
+            },
+            {
+                "color": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "intensity": 0.5,
+                "matrix": [
+                    1.0,
+                    0.0,
+                    -0.0,
+                    0.0,
+                    -0.0,
+                    0.7071067811865475,
+                    -0.7071067811865476,
+                    0.0,
+                    0.0,
+                    0.7071067811865476,
+                    0.7071067811865475,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "name": "directionalLightShape1",
+                "type": "DirectionalLight",
+                "uuid": "773466ea-cc40-346a-aa6c-37693e4c0e60"
+            }
+        ],
+        "type": "Group"
+    },
+    "textures": [
+        {
+            "url": "./textures/ZhiHeShouWu_001_d.jpg",
+            "uuid": "5933a152-3942-36e2-8019-f87b8140a18d",
+            "wrapS": 1000,
+            "wrapT": 1000
+        },
+        {
+            "url": "./textures/ZhiHeShouWu_001_n.jpg",
+            "uuid": "f1c91195-9b81-31be-8a55-8212cf54ccf3",
+            "wrapS": 1000,
+            "wrapT": 1000
+        },
+        {
+            "url": "./textures/ZhiHeShouWu_001_s.jpg",
+            "uuid": "f4b1aaba-f6a5-38a1-8dc7-c91dbe8657b7",
+            "wrapS": 1000,
+            "wrapT": 1000
+        },
+        {
+            "url": "./textures/ZhiHeShouWu_001_occ.jpg",
+            "uuid": "bf06a2a1-86e7-3528-b7d4-f76e6503c310",
+            "wrapS": 1000,
+            "wrapT": 1000
+        }
+    ]
+}

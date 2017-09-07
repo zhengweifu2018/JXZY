@@ -1,11 +1,14 @@
 
 import THREE from 'three';
 
+import GetCurrentDataString from './ZUtils/GetCurrentDataString';
+
 export default class ZTextureManager {
-	constructor(project) {
+	constructor(project, isDebug = false) {
 		this.textures = {};
 		this.record = [];
 		this.project = project;
+		this.isDebug = isDebug;
 	}
 
 
@@ -59,6 +62,11 @@ export default class ZTextureManager {
             }
             let ext = json.url.substring(pointIndex + 1, json.url.length).toLowerCase();
             let src2d = this.project.pathToAbs(json.url);
+
+            if(this.isDebug) {
+            	src2d += `?${GetCurrentDataString()}`;
+            }
+
             if(ext === 'dds') {
                 texture = THREE.ImageUtils.loadDDSTexture(src2d);
             } else if(ext === 'tga') {
@@ -67,11 +75,17 @@ export default class ZTextureManager {
                 texture = new THREE.TextureLoader().load(src2d, _texture => {
                 	_texture.needsUpdate = true;
                 });
+
+                // console.log(texture);
             }
         } else {
             let srcCube = [];
             for(let j = 0; j < json.url.length; j++) {
-                srcCube.push(this.project.pathToAbs(json.url[j]));
+            	let mUrl = this.project.pathToAbs(json.url[j]);
+            	if(this.isDebug) {
+	            	mUrl += `?${GetCurrentDataString()}`;
+	            }
+                srcCube.push(mUrl);
             }
             texture = THREE.ImageUtils.loadTextureCube(srcCube);
             // texture = new THREE.CubeTextureLoader();
