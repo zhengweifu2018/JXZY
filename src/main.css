@@ -119,7 +119,7 @@ body {
 }
 
 .jxzy-popup {
-	max-height: 500px;
+	max-height: 400px;
 	/*margin: 0 5px;*/
 	overflow: auto;
 }

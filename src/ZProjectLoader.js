@@ -24,13 +24,13 @@ ZProjectLoader.parse = (url, onLoad = undefined, isDebug = false) => {
 
             scriptManager.read(projectJson.scripts, () => {
                 // console.log(scriptManager);
-                let textureManager = new ZTextureManager(project, isDebug);
+                let textureManager = new ZTextureManager(project);
                 textureManager.read(projectJson.textures);
    
                 let materialManager = new ZMaterialManager(textureManager, project);
                 materialManager.read(projectJson.materials, projectJson.faceMaterials);
 
-                let geometryManager = new ZGeometryManager(project, isDebug);
+                let geometryManager = new ZGeometryManager(project);
                 geometryManager.read(projectJson.geometries, () => {
                     let objectManager = new ZObjectManager(materialManager, scriptManager, geometryManager, project);
                     console.log(objectManager);
